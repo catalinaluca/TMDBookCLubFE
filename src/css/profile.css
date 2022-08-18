@@ -1,0 +1,42 @@
+.App-profile{
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    width: 100%;
+    background-color: #be9b7b;
+    height: 20vh;
+    max-height: 20vh;
+  }
+  
+  .App-profile p{
+    font-size: 15px;
+  }
+  
+  .profile-left{
+    width: 50%;
+    padding-top: 20px;
+    padding-left: 10px;
+    height: 20vh;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+  }
+  
+  .profile-left p{
+    display: inline-block;
+  }
+  
+  .profile-right{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    width: 50%;
+    height: 20vh;
+    position: absolute;
+    left: 50%;
+  }
+  
+  .App-profileDetails{
+    min-height: 75vh;
+  }

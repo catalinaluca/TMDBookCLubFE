@@ -1,0 +1,159 @@
+.App-button{
+    transition-delay: 20ms;
+    transition-duration: 200ms;
+    background-color: #4b3832;
+    color: #fff4e6;
+    align-items: center;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    border: 2px solid #4b3832;
+    margin: 10px;
+    box-shadow: 0 3px #3c2f2f;
+}
+.App-button:active{
+  box-shadow: 0 2px #3c2f2f;
+  transform: translateY(2px);
+  transition-duration: 0ms;
+}
+.profile-right button{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: 100%;
+    font-size: 15px;
+    background-color: #be9b7b;
+    color: #3c2f2f;
+}
+
+  
+.profile-right button:hover{
+    color: #fff4e6;
+}
+  
+.button-logout{
+    min-height: 5vh;
+    transition-delay: 20ms;
+    transition-duration: 200ms;
+    background-color: #4b3832;
+    align-items: center;
+    float: left;
+    text-align: center;
+    
+    border-radius: 5px;
+    border: 2px solid #4b3832;
+    color: 		#fff4e6;
+}
+.button-logout:hover{
+  background-color: #fff4e6;
+  border: 2px solid #4b3832;
+  color: 	#3c2f2f;
+}
+.btnGroup{
+    color: #fff4e6;
+    flex: 1;
+    display: inline-block;
+    background-color: #4b3832;
+    border: none;
+    text-align: center;
+}
+  .button-topnav{
+    min-height: 5vh;
+    transition-delay: 20ms;
+    transition-duration: 200ms;
+    background-color: #4b3832;
+    align-items: center;
+    float: left;
+    text-align: center;
+    border: 2px solid #4b3832;
+    color: 		#fff4e6;
+  }
+  
+  .button-topnav:hover{
+    background-color: #fff4e6;
+    border: 2px solid #4b3832;
+    border-radius: 5px;
+    color: 	#3c2f2f;
+  }
+  
+  .button-login{
+    float: right;
+    min-height: 5vh;
+    transition-delay: 20ms;
+    transition-duration: 200ms;
+    background-color: #4b3832;
+    align-items: center;
+    text-align: center;
+    border: 2px solid #4b3832;
+    color: 		#fff4e6;
+  }
+  
+  .button-login:hover{
+    background-color: #fff4e6;
+    border: 2px solid #4b3832;
+    border-radius: 5px;
+    color: 	#3c2f2f;
+  }
+  .button-signin{
+    background-color: white;
+    box-shadow: 0 2px #3c2f2f;
+    margin: 16px;
+    float: center;
+    color: #3c2f2f;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  
+  .button-signin:hover{
+    background-color: #4b3832;
+    color: #fff4e6;
+    transition-duration: 200ms;
+  }
+  
+  .button-signin:active{
+    background-color: #4b3832;
+    box-shadow: 0 3px #3c2f2f;
+    transition-duration: 0ms;
+    transform: translateY(2px);
+    box-shadow: none;
+    color: #fff4e6;
+  }
+  .book-action{
+    border: none;
+    float: right;
+    margin-top: 50px;
+    background-color: #be9b7b;
+    color: #4b3832;
+  }
+  .book-action:hover{
+    border: none;
+    background-color: #4b3832;
+    color: #fff4e6;
+  }
+
+  .periodShow{
+    margin-top: 25px;
+    color: #4b3832;
+    width: 100%;
+    display: inline-block;
+    background-color: #be9b7b;
+    border: none;
+    text-align: center;
+  }
+  .period-action:focus{
+    border: none;
+    background-color: #4b3832;
+    color: #fff4e6;
+  }
+  .period-action{
+    border: none;
+    background-color: #be9b7b;
+    color: #4b3832;
+  }
+  .period-action:hover{
+    border: none;
+    background-color: #4b3832;
+    color: #fff4e6;
+  }

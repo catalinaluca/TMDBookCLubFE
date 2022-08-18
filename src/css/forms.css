@@ -1,0 +1,45 @@
+.form-login{
+    background-color: #be9b7b;
+    color: #3c2f2f;
+    padding: 20px;
+    display:flexbox;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+}
+  
+.form-login input{
+    border-radius: 3px;
+    border: none;
+  }
+  
+  .form-login input:hover{
+    border-radius: 8px ;
+  }
+  
+  .form-login input:focus{
+    border-radius: 5px ;
+  }
+
+.form-add{
+  background-color: #be9b7b;
+    color: #3c2f2f;
+    padding: 20px;
+    display:flexbox;
+    align-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.form-add input{
+  border-radius: 3px;
+  border: none;
+}
+
+.form-add input:hover{
+  border-radius: 8px ;
+}
+
+.form-add input:focus{
+  border-radius: 5px ;
+}
