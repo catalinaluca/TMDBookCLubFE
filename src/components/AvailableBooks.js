@@ -54,6 +54,9 @@ const AvailableBooks=()=>{
         }
     }
 
+    const tryAgain=()=>{
+        window.location.href='/availableBooks';
+    }
     
 
     function renderTable(){
@@ -102,7 +105,7 @@ const AvailableBooks=()=>{
                 ):<p className="p-err">
                     {errMsg}
                     <br/>
-                    <a href="/availableBooks"><button className="App-button">Try again</button></a>
+                    <button className="App-button" onClick={tryAgain}>Try again</button>
                     </p>
             }
         </article>

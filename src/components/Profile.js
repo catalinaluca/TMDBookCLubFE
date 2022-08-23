@@ -8,6 +8,10 @@ const Profile= ()=>{
         localStorage.clear();
         localStorage.setItem("isLoggedIn",false);
     }
+
+    const handleRedirect=(path)=>{
+        window.location.href=path;
+    }
     return(
         <section className="App-section">
             <div className="App-profile">
@@ -21,10 +25,10 @@ const Profile= ()=>{
             </p>
             </div>
             <div className="profile-right">
-               <a href="/myBooks"><button>My Books</button></a>
-               <a href="/addBook"><button>Add Book</button></a>
-               <a href="/deleteBook"> <button>Delete book</button></a>
-               <a href="/borrowed"><button>Borrowed Books</button></a>
+               <button onClick={()=>handleRedirect('/myBooks')}>My Books</button>
+               <button onClick={()=>handleRedirect('/addBook')}>Add Book</button>
+               <button onClick={()=>handleRedirect('/deleteBook')}>Delete book</button>
+               <button onClick={()=>handleRedirect('/borrowed')}>Borrowed Books</button>
             </div>
             </div>
             <div className="App-profileDetails">

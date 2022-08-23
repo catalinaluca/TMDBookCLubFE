@@ -14,8 +14,9 @@ p{
   font-size: 20px;
   font-family: Monaco;
 }
-a{
+App-a{
   text-decoration: none;
+  color: #fff4e6;
   text-align: center;
   align-items: center;
   align-content: center;
@@ -23,7 +24,14 @@ a{
   align-self: center;
 } 
 div a{
+  margin: auto;
+  background-color: #4b3832;
   text-decoration: none;
+  color: #fff4e6;
+}
+div a:hover{
+  background-color: #be9b7b;
+  color: #fff4e6;
 }
 .instructions {
   font-size: 0.75rem;
@@ -40,8 +48,7 @@ div a{
 }
 
 .offscreen {
-  position: absolute;
-  left: -9999px;
+  display: none;
 }
 
 .hide {
@@ -176,3 +183,63 @@ table.row-clickable tbody tr td a {
   color: #61dafb;
 }
 
+.search{
+  margin: 5px;
+  transition: 200ms;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 50vh;
+}
+
+.search:focus{
+  opacity: 100;
+}
+
+.searchDiv{
+  overflow: hidden;
+  height: fit-content;
+  text-align: center;
+  justify-content: center;
+  padding: 5px;
+  border: 1px solid #fff4e6;
+  background-color: #4b3832;
+  color: #fff4e6;
+}
+.searchDiv a{
+  padding: 5px;
+  border: 1px solid #fff4e6;
+  width: fit-content;
+}
+.searchIcon{
+  color: #fff4e6;
+}
+
+.searchIcon:hover{
+  color: #4b3832;
+}
+
+.dropdown{
+  background-color: #4b3832;
+  float: left;
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-content{
+  background-color: #4b3832;
+  min-width: 230px;
+  overflow: auto;
+  border: none;
+  /* z-index: 1;  */
+}
+.dropdown a {
+  background-color: white;
+  color: #4b3832;
+  text-decoration: none;
+}
+
+.dropdown a:hover {
+  background-color: #be9b7b;
+  color: #fff4e6;
+}
