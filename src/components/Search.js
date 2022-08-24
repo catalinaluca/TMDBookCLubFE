@@ -11,7 +11,7 @@ const Search=()=>{
     const ref=useRef(null);
     const inputHandler = (e) => {
         var lowerCase = e.target.value;
-        setInputText(lowerCase);
+        if(lowerCase.length>2 || lowerCase.length===0)setInputText(lowerCase);
     };
 
     const handleClick = () => {

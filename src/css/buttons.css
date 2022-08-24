@@ -22,7 +22,7 @@
     padding: 0;
     border: none;
     width: 100%;
-    min-height: 5vh;
+    height: 5vh;
     font-size: 15px;
     background-color: #be9b7b;
     color: #3c2f2f;
@@ -39,7 +39,9 @@
     transition-duration: 200ms;
     background-color: #4b3832;
     align-items: center;
-    float: left;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
     text-align: center;
     
     border-radius: 5px;
@@ -149,9 +151,16 @@
     color: #fff4e6;
   }
   .period-action{
-    border: none;
+    border-left: 1px solid #fff4e6;
+    padding: 5px;
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
     background-color: #be9b7b;
     color: #4b3832;
+  }
+  #period-action-left{
+    border-left: none;
   }
   .period-action:hover{
     border: none;

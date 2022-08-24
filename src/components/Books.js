@@ -1,6 +1,9 @@
 import { useState,useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
 import axios from "../api/axios"
+import Waitlist from "./Waitlist";
 const Books=()=>{
+    const [id,setId]=useState(0);
     const [books, setBooks]=useState();
     const [errMsg, setErrMsg]=useState('');
 
@@ -28,14 +31,20 @@ const Books=()=>{
         }
     },[])
 
+     const waitlist=(bookId)=>{
+        setId(bookId);
+        console.log(id);
+     }
+
     const renderTable=()=>{
         return books.map(book=>{
             return(
-                <tr key={book.bookId} className="App-tr">
+                <tr key={book.bookId} className="App-tr" >
                 <td>{book.bookId}</td>
                 <td>{book.isbn}</td>
                 <td>{book.title}</td>
                 <td>{book.author}</td>
+                <td><button className="App-button" onClick={()=>waitlist(book.bookId)}>See Waitlist</button></td>
                 </tr>
             )
             }
@@ -58,9 +67,16 @@ const Books=()=>{
                         <tbody>
                             {renderTable()}
                         </tbody>
+                        
                     </table>
                 ):<p className="p-err">{errMsg}</p>
+                
             }
+            {id!==0?(
+                            <Waitlist id={id}/>
+                        ):(
+                            <></>
+                        )}
         </article>
     );
 }

@@ -92,11 +92,11 @@ const AvailableBooks=()=>{
                         </tbody>
                     </table>
                     <div id="periodShow" className="periodShow">
-                        Rent book with ID {bookId} for: 
-                        <button className="period-action" onClick={()=>setPeriod(7)}>7 days</button>
-                        <button className="period-action" onClick={()=>setPeriod(14)}>14 days</button>
-                        <button className="period-action" onClick={()=>setPeriod(21)}>21 days</button>
-                        <button className="period-action" onClick={()=>setPeriod(30)}>30 days</button>
+                        Rent book with ID {bookId} for:
+                        <button className="period-action" id='period-action-left' onClick={()=>setPeriod(7)}>1 week</button>
+                        <button className="period-action" onClick={()=>setPeriod(14)}>2 weeks</button>
+                        <button className="period-action" onClick={()=>setPeriod(21)}>3 weeks</button>
+                        <button className="period-action" onClick={()=>setPeriod(30)}>1 month</button>
                     </div>
                     <form onSubmit={rentBook}>
                     <button className="book-action">Rent</button>

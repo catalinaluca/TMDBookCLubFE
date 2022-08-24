@@ -33,7 +33,7 @@ const App = ()=>{
   const ref=useRef(null);
   const inputHandler = (e) => {
     var lowerCase = e.target.value;
-    setInputText(lowerCase);
+    if(lowerCase.length>2 || lowerCase.length===0)setInputText(lowerCase);
   };
 
   const handleClick = () => {
@@ -112,7 +112,7 @@ const App = ()=>{
       <Route exact path='/profile' element={<Profile/>}></Route>
       <Route exact path="/login" element={<Login/>}></Route>
       <Route exact path='/users' element={<Users/>}></Route>
-      <Route exact path='/books' element={<Books/>}></Route>
+      <Route exact path='/books/*' element={<Books/>}></Route>
       <Route exact path='/availableBooks' element={<AvailableBooks/>}></Route>
       <Route exact path='/addBook' element={<AddBook/>}></Route>
       <Route exact path='/mybooks' element={<MyBooks/>}></Route>
