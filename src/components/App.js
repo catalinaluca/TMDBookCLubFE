@@ -21,6 +21,7 @@ import MyBooks from './MyBooks';
 import BorrowedBooks from './BorrowedBooks';
 import DeleteBook from './DeleteBook';
 import Search from './Search';
+import Wishlist from './Wishlist';
 
 
 const App = ()=>{
@@ -70,7 +71,7 @@ const App = ()=>{
     <Router>
     <div className="App">
       <div className='App-header'>TMD Book Rental Application </div>
-          <div className='App-topnav'>
+          <div className='App-topnav' id='topnav'>  
           <div className="dropdown">
           <button  className='button-topnav' onClick={()=>setShow(!show)}><FontAwesomeIcon icon={faSearch} aria-hidden="true" className='searchIcon'/>
           </button>
@@ -81,10 +82,11 @@ const App = ()=>{
                 <div>
                 {success?(
                   <div className='dropdown-content'>
-                        {books.slice(0,3).map(book=>(                            
+                        {books.slice(0,3).map
+                          (book=>(                            
                             <button className='searchbutton' onClick={()=>setBookId(book[0])}>{book[2]}, {book[3]}</button>
                             )
-                                  )
+                          )
                         }
                   </div>
                 )
@@ -119,6 +121,7 @@ const App = ()=>{
       <Route exact path='/deleteBook' element={<DeleteBook/>}></Route>
       <Route exact path='/borrowed' element={<BorrowedBooks/>}></Route>
       <Route exact path='/search' element={<Search/>}></Route>
+      <Route exact path='/wishlist' element={<Wishlist/>}></Route>
       </Routes>
     </Router>
     );

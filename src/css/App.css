@@ -96,14 +96,21 @@ div a:hover{
 
 .App-topnav {
   overflow: hidden;
-  min-height: 5vh;
+  width: 100%;
+  max-height: 5vh;
   background-color: #4b3832;
+}
+
+#topnav{
+  position: sticky;
+  top:0px;
 }
 
 /* Style the topnav links */
 .App-topnav a {
   display: block;
   background-color: #4b3832;
+  float: left;
   text-align: center;
   text-decoration: none;
 }

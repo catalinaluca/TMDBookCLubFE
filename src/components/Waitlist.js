@@ -39,7 +39,7 @@ const Waitlist=(props)=>{
 
     const renderList=()=>{
         return waiters.map(waiter=>{
-            return (<li><UserDetails id={waiter.waiterId}/></li>);
+            return (<li key={waiter.waitingId}><UserDetails id={waiter.waiterId}/></li>);
         })
     }
 
@@ -55,37 +55,51 @@ const Waitlist=(props)=>{
             }catch(err){
                 setErrMsg(err.response.data);
             }
+        window.location.reload(true);
+    }
+    const removeFromWaitingList=async()=>{
+        const controller=new AbortController();
+        let user=JSON.parse(localStorage.getItem("user"));
+        let userId=user.id;
+            try{
+                const response =await axios.delete(`/books/waitingList/delete/waiter?waiterId=${userId}`,{headers:{'Authorization':`Bearer ${localStorage.getItem("accessToken")}`}},{
+                    signal:controller.signal
+                },)
+                console.log(response.data);
+            }catch(err){
+                setErrMsg(err.response.data);
+            }
+        window.location.reload(true);
     }
 
     return(
         <div className="searchDiv">
-            <Book id={id}/>
             {available===true?
                 (
-                    <p>
-                        {errMsg}
-                    </p>
+                    <Book id={id}/>
                 ):
                 (
                     <>
                     <h3>Waitlist:</h3>
-                    {waiters?.length?(
+                    {waiters?.length?
+                        (
                          <ul>{renderList()}</ul>
                         )
                         :
                         (
-                            (errMsg?
-                                (<p>{errMsg}</p>)
-                                :(<p>There is nobody on the waiting list at the moment!</p>)
-                            )
+                            <p>There is nobody on the waiting list at the moment!</p>
                         )
                     }
                     <button className="App-button" onClick={addOnWaitingList}>
                         Add yourself
                     </button>
+                    <button className="App-button" onClick={removeFromWaitingList}>
+                        Remove yourself
+                    </button>
                     </>
                 )
             }
+            <p className={errMsg?'errMsg':'offscreen'}>{errMsg}</p>
         </div>
     )
 }

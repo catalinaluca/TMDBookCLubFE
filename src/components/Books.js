@@ -41,7 +41,6 @@ const Books=()=>{
         return books.map(book=>{
             return(
                 <tr key={book.bookId} className="App-tr" >
-                <td>{book.bookId}</td>
                 <td>{book.isbn}</td>
                 <td>{book.title}</td>
                 <td>{book.author}</td>
@@ -61,7 +60,6 @@ const Books=()=>{
                     <table>
                         <thead>
                             <tr>
-                            <th>ID</th>
                             <th>ISBN</th>
                             <th>Title</th>
                             <th>Author</th>

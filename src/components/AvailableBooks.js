@@ -64,7 +64,6 @@ const AvailableBooks=()=>{
             var focused=book.bookId===bookId;
             return(
                 <tr key={book.bookId} id='tr' className={focused?"trfocus":"App-tr"} onClick={()=>setBookId(book.bookId)}>
-                <td>{book.bookId}</td>
                 <td>{book.isbn}</td>
                 <td>{book.title}</td>
                 <td>{book.author}</td>
@@ -81,7 +80,6 @@ const AvailableBooks=()=>{
                     <table id='table'>
                         <thead>
                             <tr>
-                            <th>ID</th>
                             <th>ISBN</th>
                             <th>Title</th>
                             <th>Author</th>
