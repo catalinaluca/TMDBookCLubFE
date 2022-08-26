@@ -28,7 +28,7 @@ const Profile= ()=>{
                <button onClick={()=>handleRedirect('/addBook')}>Add Book</button>
                <button onClick={()=>handleRedirect('/deleteBook')}>Delete book</button>
                <button onClick={()=>handleRedirect('/borrowed')}>Borrowed Books</button>
-               <button>Wishlist</button>
+               <button onClick={()=>handleRedirect('/wishlist')}>Wishlist</button>
             </div>
             </div>
             <div className="App-profileDetails">

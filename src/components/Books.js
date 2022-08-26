@@ -6,6 +6,7 @@ const Books=()=>{
     const [show,setShow]=useState(false);
     const [books, setBooks]=useState();
     const [errMsg, setErrMsg]=useState('');
+    const [wishList,setWishList]=useState();
 
     useEffect( () => {
         let isMounted=true;
@@ -37,6 +38,21 @@ const Books=()=>{
             console.log(id);
      }
 
+     const wishlist=async (bookId)=>{
+        let isMounted=true;
+        const controller=new AbortController();
+        let user=JSON.parse(localStorage.getItem("user"));
+        let userId=user.id;
+        try{
+            const response = await axios.post(`/books/wishlist/add?userId=${userId}&bookId=${bookId}`,{},{headers:{'Authorization':`Bearer ${localStorage.getItem("accessToken")}`}},{
+                signal:controller.signal
+            },)
+            console.log(response.data);    
+            isMounted && setWishList(response.data);         
+        }catch(err){
+            setErrMsg(err.response.data);
+        } 
+     }
     const renderTable=()=>{
         return books.map(book=>{
             return(
@@ -44,9 +60,12 @@ const Books=()=>{
                 <td>{book.isbn}</td>
                 <td>{book.title}</td>
                 <td>{book.author}</td>
-                <td><button className="App-button" onClick={()=>waitlist(book.bookId)}>
-                    {(show && id===book.bookId)?('Unsee '):('See ')} Waitlist
-                </button></td>
+                <td>
+                    <button className="App-button" onClick={()=>waitlist(book.bookId)}>
+                        {(show && id===book.bookId)?('Unsee '):('See ')} Waitlist
+                    </button>
+                    <button className="App-button" onClick={()=>wishlist(book.bookId)}>Add on wishlist</button>
+                </td>
                 </tr>
             )
             }
@@ -71,13 +90,17 @@ const Books=()=>{
                         
                     </table>
                 ):<p className="p-err">{errMsg}</p>
-                
             }
             {show?(
-                            <Waitlist id={id}/>
-                        ):(
-                            <></>
-                        )}
+                    <Waitlist id={id}/>
+                ):(
+                    <></>
+                )
+            }
+            {wishList?
+                (<p>Book with ID:{wishList.bookId} added to your wishlist!</p>):
+                (<p className={errMsg?"errMsg":"offscreen"}>{errMsg}</p>)
+            }
         </article>
     );
 }
