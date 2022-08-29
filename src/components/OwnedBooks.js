@@ -1,9 +1,11 @@
 import { useState, useEffect} from 'react';
 import axios from '../api/axios';
+import UserDetails from './UserDetails';
 
 const MyBooks=()=>{
     const [books,setBooks]=useState();
     const [bookId,setBookId]=useState();
+
     const [isbn,setIsbn]=useState();    
     const [validIsbn,setValidIsbn]=useState(false);
 
@@ -24,7 +26,7 @@ const MyBooks=()=>{
         const getBooks = async ()=>{
 
             try{
-                const response = await axios.get(`/books/owners/owner?ownerId=${id}`,{headers:{'Authorization':`Bearer ${localStorage.getItem("accessToken")}`}},{
+                const response = await axios.get(`/books/borrowed/owned?ownerId=${id}`,{headers:{'Authorization':`Bearer ${localStorage.getItem("accessToken")}`}},{
                     signal:controller.signal
                 },)
                 console.log(response.data);
@@ -52,13 +54,35 @@ const MyBooks=()=>{
     useEffect(()=>{
         setValidAuthor(author!=='');
     },[author])
+    
+    function available(av){
+        if(av!==null){
+            return <>
+            Available at: {av.endDate.substring(0,10)}
+            <br/>
+            Rented by: <UserDetails id={av.userId}/>
+            </>
+        }else{
+            return <>Available</>
+        }
+    }
+
+    const handleEdit=(isbn,title,author,av)=>{
+        if(av===null){
+            setIsbn(isbn);
+            setTitle(title);
+            setAuthor(author);
+        }else{
+            setErrMsg("You can not edit a book while rented!");
+        }
+    }
 
     const renderTable=()=>{
         return books.map(book=>{
-            var focused=bookId===book.bookId;
+            var focused=bookId===(book[0].bookId) && book[1]===null;
+            let av=book[1];
             return(
-                <tr key={book.bookId}  className="App-tr">
-                <td>{book.bookId}</td>
+                <tr key={book[0].bookId}  className="App-tr">
                 <td>{focused?(<input type="text" 
                                 className='editBook' 
                                 id="isbn"
@@ -66,7 +90,7 @@ const MyBooks=()=>{
                                 value={isbn}
                                 required
                                 aria-invalid={validIsbn ? "false" : "true"}
-                                />):(book.isbn)}</td>
+                                />):(book[0].isbn)}</td>
                 <td>{focused?(<input 
                                 type="text" 
                                 className='editBook' 
@@ -74,7 +98,7 @@ const MyBooks=()=>{
                                 onChange={(e) => setTitle(e.target.value)}
                                 value={title}
                                 required
-                                aria-invalid={validTitle ? "false" : "true"}/>):(book.title)}</td>
+                                aria-invalid={validTitle ? "false" : "true"}/>):(book[0].title)}</td>
                 <td>{focused?(<input 
                                 type="text" 
                                 className='editBook'
@@ -83,14 +107,17 @@ const MyBooks=()=>{
                                 value={author}
                                 required
                                 aria-invalid={validAuthor ? "false" : "true"}
-                                />):(book.author)}</td>
-                <td><button className='App-button' onClick={()=>{setBookId(book.bookId);setIsbn(book.isbn);setTitle(book.title);setAuthor(book.author);}}>Edit</button></td>
+                                />):(book[0].author)}</td>
+                <td>{available(av)}</td>
+                <td><button className='App-button' onClick={()=>{handleEdit(book[0].isbn,book[0].title,book[0].author,av);setBookId(book[0].bookId);}}>Edit</button></td>
                 </tr>
             )
             }
         )
     }
-
+    const tryAgain=()=>{
+        window.location.reload(true);
+    }
     const editBook=async(e)=>{
         let isMounted=true;
         setErrMsg('');
@@ -111,17 +138,17 @@ const MyBooks=()=>{
     }
 
     return (
-        <article className='App-section'>
-            {books?.length
+        <section className='App-section'>
+            {books?.length && errMsg?.length===0
                 ?(
-                    <section className='App-section'>
+                    <>
                     <table>
                         <thead>
                             <tr>
-                            <th>ID</th>
                             <th>ISBN</th>
                             <th>Title</th>
                             <th>Author</th>
+                            <th>Availabilty</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -131,10 +158,13 @@ const MyBooks=()=>{
                     <form onSubmit={editBook}>
                     <button disabled={!validAuthor || !validTitle ||!validIsbn? true : false} className="book-action">Submit</button>
                     </form>
-                    </section>
-                ):<p className='p-err'>{errMsg}</p>
+                    </>
+                ):<p className='p-err'>{errMsg}
+                <br/>
+                <button className="App-button" onClick={tryAgain}>Try again</button>
+                </p>
             }
-        </article>
+        </section>
     );
 }
 export default MyBooks;

@@ -52,10 +52,11 @@ const Waitlist=(props)=>{
                     signal:controller.signal
                 },)
                 console.log(response.data);
+                window.location.reload(true);
             }catch(err){
                 setErrMsg(err.response.data);
             }
-        window.location.reload(true);
+       
     }
     const removeFromWaitingList=async()=>{
         const controller=new AbortController();
@@ -66,10 +67,11 @@ const Waitlist=(props)=>{
                     signal:controller.signal
                 },)
                 console.log(response.data);
+                window.location.reload(true);
             }catch(err){
                 setErrMsg(err.response.data);
             }
-        window.location.reload(true);
+        
     }
 
     return(

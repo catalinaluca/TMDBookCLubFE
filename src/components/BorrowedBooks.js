@@ -31,15 +31,31 @@ const BorrowedBooks=()=>{
         }
     },[])
 
+    const extendPeriod=async (rentingId)=>{
+        setErrMsg('');
+        const controller=new AbortController();
+        try{
+                const response = await axios.post(`/books/borrowed/extend?rentingId=${rentingId}`,{},{headers:{'Authorization':`Bearer ${localStorage.getItem("accessToken")}`}},{
+                    signal:controller.signal
+                },)
+                console.log(response.data);   
+                window.location.reload(true);           
+            }catch(err){
+                setErrMsg(err.response.data);
+        }
+        
+    }
+
     const renderTable=()=>{
-        return books.map((book,index)=>{
+        return books.map((book)=>{
             return(
                 <tr key={book[0].bookId} className="App-tr">
                     <td>{book[0].bookId}</td>
                     <td>{book[0].isbn}</td>
                     <td>{book[0].title}</td>
                     <td>{book[0].author}</td>
-                    <td>{book[1].substring(0,10)}</td>
+                    <td>{book[1].endDate.substring(0,10)}</td>
+                    <td><button className='App-button' onClick={()=>extendPeriod(book[1].rentingId)}>Extend Period</button></td>
                 </tr>
             )
             }
@@ -48,7 +64,7 @@ const BorrowedBooks=()=>{
 
     return (
         <article className='App-section'>
-            {books?.length
+            {books?.length &&errMsg?.length===0
                 ?(
                     <table>
                         <thead>

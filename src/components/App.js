@@ -17,11 +17,11 @@ import Book from './Book';
 import AddBook from './AddBook';
 import AvailableBooks from './AvailableBooks';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MyBooks from './MyBooks';
 import BorrowedBooks from './BorrowedBooks';
 import DeleteBook from './DeleteBook';
 import Search from './Search';
 import Wishlist from './Wishlist';
+import OwnedBooks from './OwnedBooks'
 
 
 const App = ()=>{
@@ -84,7 +84,7 @@ const App = ()=>{
                   <div className='dropdown-content'>
                         {books.slice(0,3).map
                           (book=>(                            
-                            <button className='searchbutton' onClick={()=>setBookId(book[0])}>{book[2]}, {book[3]}</button>
+                            <button className='searchbutton' onClick={()=>setBookId(book[0])} key={book[0]}>{book[2]}, {book[3]}</button>
                             )
                           )
                         }
@@ -117,7 +117,7 @@ const App = ()=>{
       <Route exact path='/books/*' element={<Books/>}></Route>
       <Route exact path='/availableBooks' element={<AvailableBooks/>}></Route>
       <Route exact path='/addBook' element={<AddBook/>}></Route>
-      <Route exact path='/mybooks' element={<MyBooks/>}></Route>
+      <Route exact path='/mybooks' element={<OwnedBooks/>}></Route>
       <Route exact path='/deleteBook' element={<DeleteBook/>}></Route>
       <Route exact path='/borrowed' element={<BorrowedBooks/>}></Route>
       <Route exact path='/search' element={<Search/>}></Route>

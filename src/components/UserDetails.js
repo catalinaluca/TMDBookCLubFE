@@ -29,7 +29,7 @@ const UserDetails=(props)=>{
     function renderDiv(){
         return(
              <div>
-                {user.username}, {user.email}, {user.name}, {user.surname}
+                {user.username}, {user.email}, {user.name} {user.surname}
             </div>
         )
     }

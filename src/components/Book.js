@@ -30,7 +30,7 @@ const Book=(props)=>{
         if(av!==null){
             return <>Available at: {av.substring(0,10)}</>
         }else{
-            return <a href="/availableBooks" className="App-a">Rent</a>
+            return <a href="/availableBooks">Rent</a>
         }
     }
     function renderDiv(){
